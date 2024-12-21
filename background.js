@@ -31,6 +31,7 @@ function get_tabs(ts) {
         console.error(ex);
     }
 }
+
 chrome.action.onClicked.addListener(function(tab) {
     try {
         chrome.tabs.query({windowId:tab.windowId,highlighted:true}, get_tabs);
