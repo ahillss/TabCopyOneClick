@@ -9,32 +9,32 @@ async function addToClipboard(value) {
 //async function addToClipboardV2(value) {  navigator.clipboard.writeText(value); }
 
 function get_tabs(ts) {
-	try {
-		var str = '';
+    try {
+        var str = '';
 
-		for (var i = 0; i < ts.length; i++) {
-			if (str.length) {
-				str += eol;
-			}
+        for (var i = 0; i < ts.length; i++) {
+            if (str.length) {
+                str += eol;
+            }
 
-			str += ts[i].url;
-		}
-		
-		addToClipboard(str);
-				
-		chrome.action.setIcon({ path: {"64": "/icon/icon64b.png"} });
-		
-		setTimeout(function(){
-			chrome.action.setIcon({ path: {"64": "/icon/icon64a.png"} });
-		}, 150);
-	} catch (ex) {
-		console.error(ex);
-	}
+            str += ts[i].url;
+        }
+        
+        addToClipboard(str);
+                
+        chrome.action.setIcon({ path: {"64": "/icon/icon64b.png"} });
+        
+        setTimeout(function(){
+            chrome.action.setIcon({ path: {"64": "/icon/icon64a.png"} });
+        }, 150);
+    } catch (ex) {
+        console.error(ex);
+    }
 }
 chrome.action.onClicked.addListener(function(tab) {
-	try {
-		chrome.tabs.query({windowId:tab.windowId,highlighted:true}, get_tabs);
-	} catch (ex) {
-		console.error(ex);
-	}
+    try {
+        chrome.tabs.query({windowId:tab.windowId,highlighted:true}, get_tabs);
+    } catch (ex) {
+        console.error(ex);
+    }
 });
